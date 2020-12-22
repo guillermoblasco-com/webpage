@@ -1,0 +1,11 @@
+.input {
+    padding: 5px;
+    outline: none!important;
+    border-radius: 5px;
+    border: 1px solid #eaeaea;
+}
+.input:focus,
+.input:active,
+.input:hover {
+    border-color: #0070f3;
+}

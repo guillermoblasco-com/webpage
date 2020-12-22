@@ -1,0 +1,7 @@
+.breadcrumbs {
+    padding: 0;
+}
+.breadcrumbs li {
+    list-style: none;
+    display: inline;
+}

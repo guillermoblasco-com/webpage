@@ -1,0 +1,20 @@
+[
+  {
+    "href": "/blog",
+    "title": "Blog",
+    "type": "Theme",
+    "description": "Original content about tech, management and teaching"
+  },
+  {
+    "href": "/references",
+    "title": "References",
+    "type": "Theme",
+    "description": "People which the author appreciates and listens to"
+  },
+  {
+    "href": "/author",
+    "title": "The author",
+    "type": "Theme",
+    "description": "Some words about the human being behind this website"
+  }
+]

@@ -1,0 +1,28 @@
+[
+  {
+    "href": "/blog/0003-modeling-data-periodic-table-part-1",
+    "type": "BlogPost",
+    "title": "Data modeling: The Periodic Table (part 1)",
+    "description": "",
+    "labels": ["Data modeling"],
+    "releaseDate": "2020-12-18"
+  },
+  {
+    "href": "/blog/0002-5-tips-for-dev-students",
+    "type": "BlogPost",
+    "title": "5 tips for dev students",
+    "description": "students students students students students",
+    "labels": ["Learning"],
+    "releaseDate": "2020-12-12",
+    "readTime": 10
+  },
+  {
+    "href": "/blog/0001-why-custom-hooks-in-react",
+    "type": "BlogPost",
+    "title": "Why custom hooks in React?",
+    "description": "It's about modularisation and state isolation",
+    "labels": ["React"],
+    "releaseDate": "2020-12-12",
+    "readTime": 10
+  }
+]

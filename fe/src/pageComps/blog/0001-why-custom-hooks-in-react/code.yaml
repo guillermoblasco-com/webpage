@@ -1,0 +1,104 @@
+---
+code1: const [counter, setCounter] = React.useState(0);
+code2: |-
+  const [counter, setCounter] = React.useState(0);
+  const handleClick1 = () => setCounter(1); // change the state to 1
+  const handleClick2 = () => setCounter(counter + 1); // increase the state in 1 unit
+  const handleClick3 = () => setCounter('meow'); // this is legal
+code3: |-
+  () => {
+    const [counter, setCounter] = useState('');
+    const handleClick = () => setCounter(counter + 1);
+    return (<button onClick={handleClick}>
+      Clicked {counter}
+    </button>);
+  }
+code4: |
+  () => {
+      const [counter, setCounter] = useState(0);
+      const handleClick = () => setCounter(counter + 1);
+      const handleReset = () => setCounter(0);
+      return (
+          <React.Fragment>
+              <button onClick={handleClick}>Clicked {counter}</button>
+              <button onClick={handleReset}>Reset</button>
+          </React.Fragment>
+      )
+  }
+code5: |-
+  const useCounter = (initialValue:number) => {
+      const [counter, setCounter] = useState(initialValue);
+      return {
+          counter,
+          increase: () => setCounter(counter - 1),
+          decrease: () => setCounter(counter + 1),
+          reset: () => setCounter(initialValue),
+      }
+  }
+code6: |-
+  () => {
+      const {counter, increase, reset} = useCounter(0);
+      return (
+          <React.Fragment>
+              <button onClick={increase}>Clicked {counter}</button>
+              <button onClick={reset}>Reset</button>
+          </React.Fragment>
+      )
+  }
+code7: |-
+  const [fetchInput, setFetchInput] = useState();
+  const [response, setResponse] = useState();
+  useEffect(() => {
+    fetch(toFetchUrl(fetchInput), toFetchOptions(fetchInput))
+      .then(r => r.json())
+      .then(r => setResponse(r));
+  }, [fetchInput]);
+  if (!response) {
+    return <div>Loading</div>;
+  }
+  return (<div>{doSomethingWithResponse(response)}</div>
+
+code7_1: |-
+  const [response, setResponse] = useState();
+  useEffect(() => {
+    fetch(`https://date.nager.at/api/v2/publicholidays/${year}/${country}`)
+      .then(r => r.json())
+      .then(r => setResponse(r));
+  }, [country, year]);
+  if (!response) {
+    return <div>Loading</div>;
+  }
+  return (<div>{doSomethingWithResponse(response)}</div>
+
+code7_2: |-
+  const useHolidays = (country, year) => {
+    const [response, setResponse] = useState();
+    useEffect(() => {
+      fetch(`https://date.nager.at/api/v2/publicholidays/${year}/${country}`)
+        .then(r => r.json())
+        .then(r => setResponse(r));
+    }, [country, year]);
+    return response;
+  };
+  /* later in the component */
+  const holidays = useHolidays(country, year);
+  if (!holidays) {
+    return <div>Loading</div>;
+  }
+  return (<div>{doSomethingWithResponse(holidays)}</div>
+
+code8: |-
+  const useGet = (url) => {
+    const [response, setResponse] = useState();
+    useEffect(() => {
+      fetch(url)
+        .then(r => r.json())
+        .then(r => setResponse(r));
+    }, [url]);
+    return response;
+  }
+
+code8_1: |-
+  const useHolidays = (country, year) => {
+    return useGet(`https://date.nager.at/api/v2/publicholidays/${year}/${country}`);
+  }

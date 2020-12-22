@@ -1,0 +1,19 @@
+
+.pill {
+    border: 2px;
+    border-radius: 10px;
+    padding: 2px 5px;
+    display: inline-block;
+    margin: 5px 5px 5px 0;
+}
+
+.pill__clickable {
+    cursor:pointer
+}
+
+.pill__disabled {
+    border-style: dashed;
+}
+.pill__enabled {
+    border-style: solid;
+}
