@@ -1,0 +1,12 @@
+{
+  "name": "guillermoblasco.com infrastructure",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Guillermo Blasco",
+  "license": "MIT",
+  "dependencies": {
+    "@aws-sdk/client-cloudformation": "^3.0.0",
+    "@aws-sdk/client-s3": "^3.0.0",
+    "aws-sdk": "^2.814.0"
+  }
+}

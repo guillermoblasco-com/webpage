@@ -1,0 +1,142 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: "Frontend - Distribution"
+Parameters:
+  CfBucket:
+    Type: String
+  CfBranch:
+    Type: String
+  BucketName:
+    Type: String
+  BucketDomainName:
+    Type: String
+  FrontendDomain:
+    Type: String
+  FrontendDomainCertificateArn:
+    Type: String
+  FrontendDomainHostedZoneId:
+    Type: String
+  CfTs:
+    Type: String
+Resources:
+  CdnIdentity:
+    Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
+    Properties:
+      CloudFrontOriginAccessIdentityConfig:
+        Comment: "CDN identity"
+  BucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref BucketName
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              AWS: !Sub 'arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity ${CdnIdentity}'
+            Action: 's3:GetObject'
+            Resource: !Sub arn:aws:s3:::${BucketName}/*
+  Domain:
+    Type: AWS::Route53::RecordSet
+    Properties:
+      HostedZoneId: !Ref FrontendDomainHostedZoneId
+      Name: !Sub '${FrontendDomain}.'
+      Type: A
+      AliasTarget:
+        # Cloudfront hosted zone https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-route53-aliastarget-1.html#cfn-route53-aliastarget-hostedzoneid
+        HostedZoneId: Z2FDTNDATAQYW2
+        DNSName: !GetAtt Cdn.DomainName
+  RouteRewriteLambdaEdgeRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: RouteLambdaRole
+      Path: "/"
+      ManagedPolicyArns:
+        - "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+      Policies:
+        - PolicyName: LogsWrite
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action:
+                  - logs:CreateLogGroup
+                  - logs:CreateLogStream
+                  - logs:PutLogEvents
+                Resource:
+                  - "arn:aws:logs:*:*:*"
+      # The function execution role must be assumable with edgelambda.amazonaws.com as well as lambda.amazonaws.com principals.
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - edgelambda.amazonaws.com
+                - lambda.amazonaws.com
+            Action: sts:AssumeRole
+  RouteRewriteLambda:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: cf-nextjs-route-rewrite
+      Role: !GetAtt RouteRewriteLambdaEdgeRole.Arn
+      AutoPublishAlias: live
+      CodeUri:
+        Bucket: !Ref CfBucket
+        Key: !Sub "${CfBranch}/lambda/cf-nextjs-route-rewrite.zip"
+      Handler: src/index.handler
+      Runtime: nodejs12.x
+      MemorySize: 128
+      Timeout: 3
+  CdnCachePolicy:
+    Type: AWS::CloudFront::CachePolicy
+    Properties:
+      CachePolicyConfig:
+        Name: DefaultCachePolicy
+        DefaultTTL: 3600
+        MaxTTL: 3600
+        MinTTL: 3000
+        ParametersInCacheKeyAndForwardedToOrigin:
+          CookiesConfig:
+            CookieBehavior: none
+          EnableAcceptEncodingBrotli: true
+          EnableAcceptEncodingGzip: true
+          HeadersConfig:
+            HeaderBehavior: none
+          QueryStringsConfig:
+            QueryStringBehavior: none
+  Cdn:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        Aliases:
+          - !Ref FrontendDomain
+        Origins:
+          - DomainName: !Ref BucketDomainName
+            Id: frontendBucket
+            S3OriginConfig:
+              OriginAccessIdentity: !Sub origin-access-identity/cloudfront/${CdnIdentity}
+        Enabled: 'true'
+        Comment: Some comment
+        DefaultRootObject: index.html
+        DefaultCacheBehavior:
+          CachePolicyId: !GetAtt CdnCachePolicy.Id
+          AllowedMethods:
+            - GET
+            - HEAD
+            - OPTIONS
+          TargetOriginId: frontendBucket
+          ForwardedValues:
+            QueryString: 'false'
+            Cookies:
+              Forward: none
+          ViewerProtocolPolicy: redirect-to-https
+          LambdaFunctionAssociations:
+            - EventType: origin-request
+              IncludeBody: false
+              LambdaFunctionARN: !Ref RouteRewriteLambda.Version
+        PriceClass: PriceClass_200
+        ViewerCertificate:
+          AcmCertificateArn: !Ref FrontendDomainCertificateArn
+          MinimumProtocolVersion: TLSv1.2_2019
+          SslSupportMethod: sni-only

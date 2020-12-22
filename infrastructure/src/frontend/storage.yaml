@@ -1,0 +1,16 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "Frontend - Storage"
+Parameters:
+  BucketName:
+    Type: String
+Resources:
+  ContentBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Ref BucketName
+      AccessControl: Private
+Outputs:
+  BucketDomainName:
+    Value: !GetAtt ContentBucket.DomainName
+
+

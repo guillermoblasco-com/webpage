@@ -1,0 +1,27 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "Domain - Index"
+Parameters:
+  CfBucket:
+    Type: String
+  CfBranch:
+    Type: String
+  CfBaseUrl:
+    Type: String
+  DomainName:
+    Type: String
+  FrontendDomain:
+    Type: String
+  DomainHostedZoneId:
+    Type: String
+Resources:
+  FrontendDomainCertificate:
+    Type: "AWS::CertificateManager::Certificate"
+    Properties:
+      DomainName: !Ref DomainName
+      DomainValidationOptions:
+        - DomainName: !Ref FrontendDomain
+          HostedZoneId: !Ref DomainHostedZoneId
+      ValidationMethod: DNS
+Outputs:
+  FrontendDomainCertificateArn:
+    Value: !Ref FrontendDomainCertificate

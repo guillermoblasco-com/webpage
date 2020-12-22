@@ -1,0 +1,42 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "Frontend - Index"
+Parameters:
+  CfBucket:
+    Type: String
+  CfBranch:
+    Type: String
+  CfBaseUrl:
+    Type: String
+  OpsEmail:
+    Type: String
+  BucketName:
+    Type: String
+  FrontendDomainCertificateArn:
+    Type: String
+  FrontendDomain:
+    Type: String
+  FrontendDomainHostedZoneId:
+    Type: String
+  CfTs:
+    Type: String
+Resources:
+  Storage:
+    Type: AWS::CloudFormation::Stack
+    Properties:
+      TemplateURL: !Sub '${CfBaseUrl}frontend/storage.yaml'
+      Parameters:
+        BucketName: !Ref BucketName
+  Distribution:
+    Type: AWS::CloudFormation::Stack
+    DependsOn: Storage
+    Properties:
+      TemplateURL: !Sub '${CfBaseUrl}frontend/distribution.yaml'
+      Parameters:
+        CfTs: !Ref CfTs
+        CfBranch: !Ref CfBranch
+        CfBucket: !Ref CfBucket
+        BucketName: !Ref BucketName
+        BucketDomainName: !GetAtt Storage.Outputs.BucketDomainName
+        FrontendDomain: !Ref FrontendDomain
+        FrontendDomainCertificateArn: !Ref FrontendDomainCertificateArn
+        FrontendDomainHostedZoneId: !Ref FrontendDomainHostedZoneId
