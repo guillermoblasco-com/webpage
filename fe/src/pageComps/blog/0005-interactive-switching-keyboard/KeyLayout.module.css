@@ -1,0 +1,7 @@
+
+.KeyLayout {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(33, 1fr);
+    grid-gap: 5px;
+}

@@ -1,0 +1,64 @@
+---
+code1_css: |-
+  .Key {
+    border: 1px solid black;
+    border-radius: 5px;
+  }
+
+code1_html: |-
+  <span class="Key">W</span>
+
+code2_css: |-
+  .Key {
+    border: 1px solid black;
+    border-radius: 5px;
+    display:flex;
+  }
+  .KeyValue {
+    margin: auto;
+  }
+
+code2_html: |-
+  <span class="Key">
+    <span class="KeyValue">W</span>
+  </span>
+
+code3_css: |-
+  .Key {
+    border: 1px solid black;
+    border-radius: 5px;
+    display:flex;
+  }
+  .Key:before {
+      content: "";
+      padding-bottom: 100%;
+      display: block;
+  }
+  .KeyValue {
+    margin: auto;
+  }
+
+code3_html: |-
+  <span class="Key">
+    <span class="KeyValue">W</span>
+  </span>
+
+code4_css: |-
+  .Parent {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(33, 1fr);
+    grid-gap: 5px;
+  }
+
+code4_html: |-
+  <div class="Parent">
+      ...the key elements here
+  </span>
+
+code5: |-
+  const style = {
+      gridColumnStart: props.column * 3 + 1 + props.row,
+      gridColumnEnd: (props.column + 1) * 3 + 1 + props.row,
+      gridRow: props.row + 1,
+  }

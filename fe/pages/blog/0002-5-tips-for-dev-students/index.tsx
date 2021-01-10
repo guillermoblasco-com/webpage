@@ -87,23 +87,131 @@ export default function BlogPost002 () {
                 </p>
             </section>
             <section>
-                <h2>3. The first company you'll work at is critical</h2>
+                <h2>3. The first team you'll work with is critical</h2>
                 <p>
                     There are no definite answers for the question "Which is the best company to work at?". At the end
                     it is a personal decision, not just professional. However some general rules may make sense.
+                    Surprisingly or unsurprisingly, on one hand most of the learning you'll get will be by the expertise of the
+                    team that is around you. On the other hand you'll learn a lot by doing things you never did before.
+                    So you may want an environment which provides you of challenges and a team which will support you
+                    while facing those challenges. Where are those companies? Don't know, but usually they share some
+                    traits. And since it is quite difficult to stand those traits, I'll just rush some thoughts I have.
+                    Consider anyhow that 90% depends on the team members, regardless of the type of company. So, here
+                    we are just adjusting a 10% as much. But is the upfront 10% we can do before landing on a company.
                 </p>
                 <p>
-                    First, don't
+                    They are not big corporate companies usually. The reality is that most corporate big companies
+                    focus on reliability and continuity, therefore the belt is quite tight on letting juniors challenge
+                    themselves in doing things they never did before. Nonetheless corporate companies may have great
+                    professionals that have faced large scale challenges.
+                </p>
+                <p>
+                    They are not super small startups. Well, you can learn a lot in a seed startup. But at least check
+                    that there are three or four devs (and some of them are seniors). To address the startup conversation:
+                    you can face a lot of challenges in a startup and generally juniors that may take ownership on
+                    those challenges are very very welcome. The point is that probably it will be easier and safer for
+                    you to start in a series A startup (like 30-50 employees) rather than in a seed startup of 3-4
+                    friends.
+                </p>
+                <p>
+                    Outsourcing companies are, in my honest opinion, a great choice. I started there. You'll be able to
+                    move between projects, that may be diverse in technologies and purpose. Just take care of avoid
+                    those mass production outsourcing firms that don't pay attention to quality :)
                 </p>
             </section>
             <section>
                 <h2>4. Teaching is a powerful tool for learning</h2>
                 <p>
-
+                    Some time ago I've discovered that teaching helps a lot to consolidate knowledge. We'll touch the
+                    how after we see the why. And the why is quite... ethereal. And by ethereal I want to say that
+                    I don't have any concrete nor logic nor scientific reasoning of the why, but definitely when you
+                    teach you feel it. There are two points. The first is having to explain some knowledge, this
+                    process reinforces that knowledge and will hardwire it into your neurons. The second is because
+                    most of the times we learn the hows and whats, but not the whys. When we are rushing to deliver a
+                    project meanwhile learning a new framework, there are many things that you learn how to do it
+                    but not why it has to be done that way. And probably you'll not going to come back to that
+                    to understand the why. That happens a lot with our beloved Stack Overflow. "WTF this error, I'm
+                    searching that in google. Oh, Stack overflow. Oh I see, there is the fix. Copy-paste." And it is
+                    fixed, but if you didn't took 5 minutes to read it and understand it, you didn't get the why. And
+                    the great point of students (not all, but some) is that they are going to ask you the why, and
+                    you'll feel sometimes that you don't know why, forcing yourself to revisit that knowledge and truly
+                    learn it.
+                </p>
+                <p>
+                    But, as a junior how can you even teach? Well, the day after ending a bootcamp is somewhat risky.
+                    Nonetheless, after few months, once you feel a little secure on programming there are three ways.
+                    And here we are going to try to think a little out of the box.
+                </p>
+                <p>
+                    The most personal is to assist and help other juniors in your team. For example, whenever a new
+                    junior joins the team propose yourself to onboard her or him in the project. This new member will
+                    need help setting up the project, configuring stuff, understanding the database, apis, components,
+                    services, following the code guidelines. There are many things you can help with, just remember
+                    the first months at the company and all the challenges you had to overcome. That is exactly the help
+                    you can provide, and definitely that will help you to understand better the hows and whys of all those
+                    matters.
+                    Remember that as junior
+                    developer probably you are not really experienced in programming therefore you may find yourself
+                    in the situation of teaching to an equal (that is, another junior). This might be called helping
+                    or assisting or co-learning instead of teaching depending on the roles and experience that each one
+                    may have. Anyhow, when playing that role with an equal never downplay the knowhow of the other part.
+                    Probably in that case "teaching" is a too strong word, "helping to learn" is a more suitable concept.
+                </p>
+                <p>
+                    The most obvious way is to find some place where you can formally teach. That may be a university
+                    or a bootcamp. The role you are looking for is associate teacher on universities and teaching
+                    assistant in bootcamps, although the role may take many other names. Being programming university
+                    classes and programming bootcamps really different they both need teachers to assist the students
+                    during the practice. Usually that is during the "hands-on" classrooms or "laboratories". Every place
+                    has its own way to do it, but mostly all do. Also here you'll have the chance to earn some extra
+                    money. And finally, in universities you'll find a wider scope of knowledge, like subjects specific
+                    on databases, or operative systems; bootcamps have some day dedicated to databases and operative
+                    systems, but not entire three month long subjects.
+                </p>
+                <p>
+                    The most autonomous way is to create content! Teaching is usually understood as something active:
+                    "I am teaching you whatever knowledge". But it has not to be that way. Teaching is helping other
+                    learning. And the goal of that is to understand better something by forcing yourself to having to
+                    explain it to others. That can be accomplished by just writing a post on "How to do X with Y", or
+                    a video, or a live coding, whatever. The good point of that is that you can teach whatever motivates
+                    you. You are not tied to a team, nor a company, nor a teaching institution. Do you want to explain
+                    how to start an assembler project? Well, no one will be on your way to forbid it.
                 </p>
             </section>
             <section>
                 <h2>5. Software development is not only about programming</h2>
+                <p>
+                    Being skillful in programming is just one requirement, the entry requirement, the obvious one.
+                    And to be honest, the more skillful the better, it is still a requirement. But it is not the only
+                    one. That's something that after the first three months you'll realise, and many readers will nod
+                    their heads while reading that. You'll need (at least) one more skill to be a successful dev:
+                    teamwork.
+                </p>
+                <p>
+                    Developers rarely work alone. Developers work in a development team, usually between 3 to 6 devs,
+                    and possibly with other roles (QA, DevOps, Product, designers, ...). And this teamwork is not
+                    any teamwork, because if there is something popular nowadays in tech are agile methodologies. Indeed
+                    this teamwork can be split in three themes: methodology, processes, teamwork per-se.
+                </p>
+                <p>
+                    Agile methodologies are a set of processes, roles and goals to let teams deliver more value, faster
+                    in a predictable manner. There are two big agile methodologies: Scrum and Kanban, and its derivatives
+                    (like SAFE) and some others. They are not rocket science, you'll learn it and get used to. But it is
+                    never late to do some online course about those methodologies to learn the what, how and why.
+                </p>
+                <p>
+                    Also a dev team has many processes that involve many people, and each team may have their owns
+                    processes. Again, you'll learn them, but if you have the chance to have some experience before
+                    that would be great. Some processes are pair programming, code review, pull requests (yes, PRs are
+                    a process), merging code, reading other's code, fixing bugs of other's code, and others fixing bugs
+                    on your code, ... Let's say that since the codebase is shared, there are many processes to bring
+                    some order into the mess that is everyone changing the "same" codebase.
+                </p>
+                <p>
+                    And finally as any team, you'll have to deal with human things. Like support others, being supported,
+                    managing conflicts, being managed, manage others. The point is that the vision of the lonely developer
+                    in a garage is almost non-existent. And if you like teamwork, then you'll like that job a lot.
+                </p>
             </section>
         </Article>
     </PageView>)

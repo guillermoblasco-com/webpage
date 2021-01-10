@@ -1,0 +1,13 @@
+.Key {
+    border: 1px solid black;
+    border-radius: 5px;
+    display: flex;
+}
+.Key:before {
+    content: "";
+    padding-bottom: 100%;
+    display: block;
+}
+.KeyValue {
+    margin: auto;
+}

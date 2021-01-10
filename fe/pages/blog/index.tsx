@@ -39,7 +39,7 @@ export default function Blog() {
       <InputText placeholder="Search here" type="text" onChange={e => setSearch(e.target.value)} value={search} />
 
       <Grid>
-        {results.map(blogPage => <PageCard page={blogPage} key={blogPage.href}/> )}
+        {results.map(blogPage => <PageCard page={blogPage} key={blogPage.href} noDescription /> )}
         {results.length !== blogPages.length && (<Card title="Maybe remove filters?" description="Click here to remove the search" onClick={cleanSearch} />)}
       </Grid>
   </PageView>)

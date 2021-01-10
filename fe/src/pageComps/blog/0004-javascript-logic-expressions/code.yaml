@@ -1,0 +1,93 @@
+---
+code1: |-
+  && // and operation
+  || // or operation
+
+code2: |-
+  true && true // evaluates as true
+  false && true // evaluates as false
+  false && false // evaluates as false
+
+code3: |-
+  true && true && true && true && true // evaluates as true
+  true && true && false && true && true // evaluates as false
+
+code4: |-
+  false && true // evaluates as false
+           |- this valuee is not read by the interpreter
+  true && true && false && true && true // evaluates as false
+                           |-------|- those values are not read by the interpreter
+code5: |-
+  (((true && true) && false) && true) && true // step 1
+     \___true___/
+     |/
+  ((true && false) && true) && true // step 2
+    \___false___/
+    |/
+  (false && true) && true // step 3
+   \___false___/
+    |/
+  false && true // step 4
+  \__false___/
+  |/
+  false // outcome
+
+code6: |-
+  aTrue && bTrue && cTrue && dTrue && eTrue // evaluates as true
+  aTrue && bTrue && cFalse && dTrue && eTrue // evaluates as false
+code2_1: |-
+  Boolean(0) // false
+  Boolean(23) // true
+  !!0 // false
+  !!"meow" // true
+code2_2: |-
+  let user = { id: 23 }
+  user && user.id // returns 23
+  let user = { }
+  user && user.id // returns undefined, because there is no id in user
+  user = undefiend
+  user && user.id // returns undefined, because there is no user
+
+code2_3: |-
+  2 && 3 // returns 3
+  0 && 3 // returns 0
+  '' && 'meow' // returns ''
+  true && 'meow' // returns 'meow'
+code2_4: |-
+  function and(left, right) {
+    if (Boolean(left)) { // type coercion happens here
+      return right;
+    }
+    return left;
+  }
+code3_1: |-
+  const name = req.body.name; // get the name somehow
+  const user = name && findUserByName(name);
+  const user = name && !isBlank(name) && findUserByName(name);
+
+code3_2: |-
+  const name = req.body.name; // get the name somehow
+  !userExistsByName(name) && createUser(name);
+
+code3_3: |-
+  const name = req.body.name; // get the name somehow
+  if (!userExistsByName(name)) {
+    createUser(name);
+  }
+
+code3_4: |-
+  return <div>{user && <span>{user.name}</span>}</div>;
+  // is compiled to:
+  return React.createElement('div', null, user && React.createElement('span', null, user.name));
+
+code4_1: |-
+  /* if page size is not provided then use 10 */
+  const pageSize = req.body.pageSize || 10;
+
+code5_1: |-
+  if (a) {
+    return b;
+  }
+  return c;
+
+code5_2: |-

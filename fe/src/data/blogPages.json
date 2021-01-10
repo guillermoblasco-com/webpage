@@ -1,20 +1,30 @@
 [
   {
-    "href": "/blog/0003-modeling-data-periodic-table-part-1",
+    "href": "/blog/0005-css-of-a-keyboard",
     "type": "BlogPost",
-    "title": "Data modeling: The Periodic Table (part 1)",
+    "title": "CSS of a keyboard",
     "description": "",
-    "labels": ["Data modeling"],
-    "releaseDate": "2020-12-18"
+    "labels": ["CSS"],
+    "releaseDate": "2021-01-06",
+    "readTime": 10
+  },
+  {
+    "href": "/blog/0004-javascript-logic-expressions",
+    "type": "BlogPost",
+    "title": "JavaScript logic expressions",
+    "description": "",
+    "labels": ["Javascript"],
+    "releaseDate": "2020-12-31",
+    "readTime": 15
   },
   {
     "href": "/blog/0002-5-tips-for-dev-students",
     "type": "BlogPost",
     "title": "5 tips for dev students",
-    "description": "students students students students students",
+    "description": "Some tips based on the experience of a senior dev",
     "labels": ["Learning"],
     "releaseDate": "2020-12-12",
-    "readTime": 10
+    "readTime": 15
   },
   {
     "href": "/blog/0001-why-custom-hooks-in-react",

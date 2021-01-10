@@ -1,11 +1,11 @@
 import {Page} from "../../types";
-import Card from "./Card";
+import Card, {CardProps, CardPropsExtra} from "./Card";
 import React from "react";
 
-export interface PageCardProps {
+export interface PageCardProps extends CardPropsExtra {
     page: Page;
 }
 
-export default function PageCard ({page}:PageCardProps) {
-    return <Card {...page} />;
+export default function PageCard (props:PageCardProps) {
+    return <Card {...props} {...props.page} />;
 }
