@@ -107,7 +107,7 @@ export default function BlogPost005 () {
             <CodeBlock jsx>{code.code5}</CodeBlock>
             <p>
                 This code has been putted together with react. Actually you can find all the files in the repository
-                of the source code of the blog! Checkout <a href="https://github.com/guillermoblasco-com/webpage/tree/master/fe" target="_blank">this directory</a>.
+                of the source code of the blog! Checkout <a href="https://github.com/guillermoblasco-com/webpage/tree/master/fe/src/pageComps/blog/0005-interactive-switching-keyboard" target="_blank">this directory</a>.
             </p>
 
         </section>
